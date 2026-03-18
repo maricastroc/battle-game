@@ -41,3 +41,28 @@ enemy = select_enemy()
 
 print(f"\nYou chose {hero.name}!")
 print(f"You will fight against {enemy.name}!")
+
+while hero.is_alive() and enemy.is_alive():
+  print(f"\n{hero.name}: {hero.life_points} HP | {hero.mana} Mana")
+  print(f"{enemy.name}: {enemy.life_points} HP")
+
+  action = input("\n1 - Attack (ability)\n2 - Basic attack\nq - Quit\n> ")
+
+  if action == "1":
+    hero.attack(enemy)
+
+  elif action == "2":
+    print(f"{hero.name} used a basic attack!")
+    enemy.take_damage(10)
+
+  elif action == "q":
+    print("Game finished!")
+    break
+
+  else:
+    print("Invalid action!")
+    continue
+
+  if enemy.is_alive():
+    input("Press ENTER for enemy turn...")
+    enemy.attack(hero)

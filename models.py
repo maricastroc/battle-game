@@ -61,7 +61,8 @@ class Ability:
 
   def use(self, caster: Character, target: Character) -> None:
     if caster.mana < self.mana_cost:
-      print('Not enough mana.')
+      print(f"{caster.name} is out of mana! Using basic attack!")
+      target.take_damage(10)
       return
     
     caster.mana -= self.mana_cost

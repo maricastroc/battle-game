@@ -1,3 +1,5 @@
+import random 
+
 class Character:
   def __init__(self, name: str, level: int, life_points: int, mana: int):
     self._name = name
@@ -82,10 +84,9 @@ class Hero(Character):
       self._ability.use(self, target)
 
 class Enemy(Character): 
-    def __init__(self, name: str, level: int, life_points: int, mana: int, enemy_type: str, damage: int):
+    def __init__(self, name: str, level: int, life_points: int, mana: int, enemy_type: str):
       super().__init__(name, level, life_points, mana)
       self._enemy_type = enemy_type
-      self._damage = damage
 
     @property
     def enemy_type(self) -> str:
@@ -93,11 +94,12 @@ class Enemy(Character):
     
     @property
     def damage(self) -> int:
-      return self._damage
+      return random.randint(self.level * 2, self.level * 6)
     
     def attack(self, target: Character) -> None:
-      target.take_damage(self.damage)
-      print(f"{self.name} attacked {target.name}, dealing {self.damage} damage!")
+      damage = self.damage
+      target.take_damage(damage)
+      print(f"{self.name} attacked {target.name}, dealing {damage} damage!")
 
       if not target.is_alive():
         print(f"Game over! {self.name} wins!")

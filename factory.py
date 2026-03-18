@@ -21,10 +21,10 @@ def create_hero(name: str):
   raise ValueError(f"Unknown hero: {name}")
 
 def create_joker():
-  return Enemy("Joker", 4, 90, 50, "Clown", 15)
+  return Enemy("Joker", 4, 90, 50, "Clown")
 
 def create_thanos():
-  return Enemy("Thanos", 6, 110, 70, "God", 20)
+  return Enemy("Thanos", 6, 110, 70, "God")
 
 def create_freeza():
-  return Enemy("Freeza", 8, 130, 80, "Alien", 30)
+  return Enemy("Freeza", 8, 130, 80, "Alien")
